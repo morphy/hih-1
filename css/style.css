@@ -1,0 +1,223 @@
+/* Fonts */
+
+@font-face
+{
+  font-family: Nove;
+  font-weight: 400;
+  font-style: normal;
+  src: url('../fonts/novecentosanswide-normal-webfont.woff') format('woff');
+}
+
+@font-face
+{
+  font-family: Nove;
+  font-weight: 700;
+  font-style: normal;
+  src: url('../fonts/novecentosanswide-bold-webfont.woff') format('woff');
+}
+
+html, body
+{
+  font-family: Nove;
+}
+
+/* Grid */
+
+.container
+{
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.container-fluid
+{
+  width: 100%;
+}
+
+.row
+{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col-1
+{
+  flex: 0 0 calc((100% / 12) * 1);
+}
+
+.col-2
+{
+  flex: 0 0 calc((100% / 12) * 2);
+}
+
+.col-3
+{
+  flex: 0 0 25%;
+}
+
+.col-4
+{
+  flex: 0 0 calc((100% / 12) * 4);
+}
+
+.col-5
+{
+  flex: 0 0 calc((100% / 12) * 5);
+}
+
+.col-6
+{
+  flex: 0 0 50%;
+}
+
+.col-7
+{
+  flex: 0 0 calc((100% / 12) * 7);
+}
+
+.col-8
+{
+  flex: 0 0 calc((100% / 12) * 8);
+}
+
+.col-9
+{
+  flex: 0 0 75%;
+}
+
+.col-10
+{
+  flex: 0 0 calc((100% / 12) * 10);
+}
+
+.col-11
+{
+  flex: 0 0 calc((100% / 12) * 11);
+}
+
+.col-12
+{
+  flex: 0 0 100%;
+}
+
+/* Modifiers */
+
+.h-100
+{
+  min-height: 100%;
+}
+
+/* Colors */
+
+.bg-green
+{
+  background: #50af6f;
+}
+
+.bg-gray
+{
+  background: #28292b;
+}
+
+/* Menu */
+
+nav ul
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav ul li
+{
+  padding: 0 30px;
+}
+
+nav ul li::after
+{
+  display: block;
+  content: ' ';
+  width: 100%;
+  height: 4px;
+  background: #62bb7f;
+  transition: all 0.2s ease-in-out;
+}
+
+nav ul li a
+{
+  display: block;
+  padding-bottom: 10px;
+  font: 400 18px Nove;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #aeecc2;
+  transition: all 0.2s ease-in-out;
+}
+
+nav ul li:hover a
+{
+  color: #fff;
+}
+
+nav ul li:hover::after
+{
+  background: #fff;
+}
+
+/* Head */
+
+h1
+{
+  font-size: 72px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 74px;
+  color: #fff;
+}
+
+h2
+{
+  font-size: 30px;
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 32px;
+  color: #aeecc2;
+}
+
+hr
+{
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: #aeecc2;
+  margin: 0 auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* */
