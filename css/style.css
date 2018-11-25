@@ -236,6 +236,7 @@ p, a.link
 {
   color: #a4a7ac;
   font: 18px Arial Helvetica, sans-serif;
+  text-align: center;
 }
 
 a.link
@@ -413,6 +414,19 @@ footer p
   line-height: 17px;
   padding-left: 30px;
   padding-right: 30px;
+}
+
+.gallery a
+{
+  display: inline-block;
+  padding-top: 15px;
+}
+
+.gallery a img
+{
+  width: 65px;
+  height: 65px;
+  margin-left: 10px;
 }
 
 /* Form */
