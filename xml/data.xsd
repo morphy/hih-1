@@ -5,16 +5,12 @@
       <xs:sequence>
         <xs:element name="languages" type="languagesType"/>
         <xs:element name="libs" type="libsType"/>
-        <!--<xs:element name="tools" type="toolsType"/>
+        <xs:element name="tools" type="toolsType"/>
         <xs:element name="ides" type="idesType"/>
         <xs:element name="browsers" type="browsersType"/>
-        <xs:element name="website-types" type="website-typesType"/>-->
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-
-  <!-- Some global motherfuckers -->
-
   <xs:attribute name="usability">
     <xs:simpleType>
       <xs:restriction base="xs:integer">
@@ -23,9 +19,17 @@
       </xs:restriction>
     </xs:simpleType>
   </xs:attribute>
-
-  <!-- Languages -->
-
+  <xs:simpleType name="year">
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="1900"/>
+      <xs:maxInclusive value="2018"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="version">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]+\.[0-9]+\.[0-9]+"/>
+    </xs:restriction>
+  </xs:simpleType>
   <xs:complexType name="languagesType">
     <xs:sequence>
       <xs:element name="lang" minOccurs="0" maxOccurs="unbounded">
@@ -60,25 +64,17 @@
       <xs:enumeration value="Both"/>
     </xs:restriction>
   </xs:simpleType>
-
-  <!-- Libs -->
-
   <xs:complexType name="libsType">
     <xs:sequence>
       <xs:element name="lib" type="libType" minOccurs="1" maxOccurs="100"/>
     </xs:sequence>
   </xs:complexType>
-
   <xs:complexType name="libType">
     <xs:sequence>
       <xs:element name="name" type="xs:string"/>
       <xs:element name="features">
         <xs:complexType>
-          <xs:sequence>
-            <xs:element name="plugins" type="yesNoType" minOccurs="1" maxOccurs="1"/>
-            <xs:element name="cli" type="yesNoType" minOccurs="1" maxOccurs="1"/>
-            <xs:element name="cdn" type="yesNoType" minOccurs="1" maxOccurs="1"/>
-          </xs:sequence>
+          <xs:group ref="ynGroup"/>
         </xs:complexType>
       </xs:element>
     </xs:sequence>
@@ -93,34 +89,130 @@
       </xs:simpleType>
     </xs:attribute>
   </xs:complexType>
+  <xs:group name="ynGroup">
+    <xs:sequence>
+      <xs:element name="plugins" type="yesNoType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="cli" type="yesNoType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="cdn" type="yesNoType" minOccurs="1" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:group>
   <xs:simpleType name="yesNoType">
     <xs:restriction base="xs:string">
       <xs:pattern value="yes|no"/>
     </xs:restriction>
   </xs:simpleType>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <xs:complexType name="toolsType">
+    <xs:sequence>
+      <xs:element name="tool" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="name" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="full" minOccurs="1" maxOccurs="1">
+                    <xs:complexType mixed="true">
+                      <xs:sequence>
+                        <xs:element name="short" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="logo" minOccurs="1" maxOccurs="1">
+                    <xs:complexType>
+                      <xs:attribute name="src" type="xs:anyURI"/>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="version" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:attribute name="vr">
+                  <xs:simpleType>
+                    <xs:list>
+                      <xs:simpleType>
+                        <xs:union memberTypes="version year"/>
+                      </xs:simpleType>
+                    </xs:list>
+                  </xs:simpleType>
+                </xs:attribute>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+          <xs:attribute ref="usability" use="required"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="idesType">
+    <xs:sequence>
+      <xs:element name="ide" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="vendor" type="xs:string"/>
+            <xs:element name="version" type="version"/>
+            <xs:element name="lngs">
+              <xs:simpleType>
+                <xs:restriction>
+                  <xs:simpleType>
+                    <xs:list>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:enumeration value="C#"/>
+                          <xs:enumeration value="C++"/>
+                          <xs:enumeration value="Visual_Basic"/>
+                          <xs:enumeration value="J#"/>
+                          <xs:enumeration value="ASP.NET"/>
+                          <xs:enumeration value="F#"/>
+                          <xs:enumeration value="XML"/>
+                          <xs:enumeration value="HTML"/>
+                          <xs:enumeration value="CSS"/>
+                          <xs:enumeration value="PHP"/>
+                          <xs:enumeration value="JS"/>
+                          <xs:enumeration value="SQL"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:list>
+                  </xs:simpleType>
+                  <xs:maxLength value="8"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="browsersType">
+    <xs:sequence>
+      <xs:element name="browser" type="browserType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="browserType">
+    <xs:sequence>
+      <xs:element name="title" type="xs:string"/>
+      <xs:element name="company" type="xs:string"/>
+      <xs:element name="date-and-version">
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="version">
+              <xs:attribute name="date" type="xs:date" use="required"/>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element ref="number-of-users"/>
+      <xs:element name="website">
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:string">
+              <xs:attribute name="link" type="xs:anyURI"/>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="engine" type="xs:string"/>
+  </xs:complexType>
+  <xs:element name="number-of-users" type="xs:integer"/>
 </xs:schema>
