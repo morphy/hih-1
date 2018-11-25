@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="data">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="languages" type="languagesType"/>
+        <xs:element name="libs" type="libsType"/>
+        <!--<xs:element name="tools" type="toolsType"/>
+        <xs:element name="ides" type="idesType"/>
+        <xs:element name="browsers" type="browsersType"/>
+        <xs:element name="website-types" type="website-typesType"/>-->
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- Some global motherfuckers -->
+
+  <xs:attribute name="usability">
+    <xs:simpleType>
+      <xs:restriction base="xs:integer">
+        <xs:minInclusive value="0"/>
+        <xs:maxInclusive value="10"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+
+  <!-- Languages -->
+
+  <xs:complexType name="languagesType">
+    <xs:sequence>
+      <xs:element name="lang" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element type="nameType" name="name"></xs:element>
+            <xs:element type="fullnameType" name="fullname"></xs:element>
+            <xs:element type="usageType" name="usage"></xs:element>
+          </xs:sequence>
+          <xs:attribute name="typing" type="xs:string"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="nameType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="20"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="fullnameType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="60"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="usageType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Local"/>
+      <xs:enumeration value="Backend"/>
+      <xs:enumeration value="Frontend"/>
+      <xs:enumeration value="Both"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Libs -->
+
+  <xs:complexType name="libsType">
+    <xs:sequence>
+      <xs:element name="lib" type="libType" minOccurs="1" maxOccurs="100"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="libType">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="features">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="plugins" type="yesNoType" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="cli" type="yesNoType" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="cdn" type="yesNoType" minOccurs="1" maxOccurs="1"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute ref="usability" use="required"/>
+    <xs:attribute name="lang" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="js"/>
+          <xs:enumeration value="php"/>
+          <xs:enumeration value="css"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:simpleType name="yesNoType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="yes|no"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</xs:schema>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="data.xsd">
+  <languages>
+    <lang typing="static">
+      <name>C++</name>
+      <fullname>C++</fullname>
+      <usage>Local</usage>
+    </lang>
+    <lang typing="dynamic">
+      <name>PHP</name>
+      <fullname>PHP Hypertext Preprocessor</fullname>
+      <usage>Backend</usage>
+    </lang>
+    <lang>
+      <name>HTML</name>
+      <fullname>HyperText Markup Language</fullname>
+      <usage>Frontend</usage>
+    </lang>
+    <lang>
+      <name>CSS</name>
+      <fullname>Cascading Style Sheets</fullname>
+      <usage>Frontend</usage>
+    </lang>
+    <lang typing="dynamic">
+      <name>JS</name>
+      <fullname>JavaScript</fullname>
+      <usage>Both</usage>
+    </lang>
+  </languages>
+  <libs>
+    <lib lang="js" usability="6">
+      <name>jQuery</name>
+      <features>
+        <plugins>yes</plugins>
+        <cli>no</cli>
+        <cdn>yes</cdn>
+      </features>
+    </lib>
+    <lib lang="js" usability="10">
+      <name>AngularJS</name>
+      <features>
+        <plugins>yes</plugins>
+        <cli>yes</cli>
+        <cdn>yes</cdn>
+      </features>
+    </lib>
+    <lib lang="php" usability="7">
+      <name>ZendFramework</name>
+      <features>
+        <plugins>yes</plugins>
+        <cli>yes</cli>
+        <cdn>no</cdn>
+      </features>
+    </lib>
+    <lib lang="css" usability="7">
+      <name>Animate.css</name>
+      <features>
+        <plugins>no</plugins>
+        <cli>no</cli>
+        <cdn>no</cdn>
+      </features>
+    </lib>
+  </libs><!--
+  <tools>
+  </tools>
+  <ides>
+  </ides>
+  <browsers>
+  </browsers>
+  <website-types>
+  </website-types>-->
+</data>
